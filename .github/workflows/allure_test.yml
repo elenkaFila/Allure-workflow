@@ -20,8 +20,8 @@ jobs:
         run:
           pytest --alluredir=allure-results
         continue-on-error: true
-        
   allure:
+    needs: test
     name: Generate Allure Report
     runs-on: ubuntu-latest
     steps:
