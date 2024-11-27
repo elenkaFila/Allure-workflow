@@ -27,8 +27,8 @@ jobs:
         continue-on-error: true
       - name: Copy history from gh-pages to allure-result
         run:
-          sudo mkdir -p allure-results/history
-          sudo cp -R ./.github/gh-pages/history/* allure-results/history
+          sudo mkdir -p allure-results/history 
+          sudo cp -R ./.github/gh-pages/history/* allure-results/history/
       - name: Generate Allure report
         uses: simple-elf/allure-report-action@v1.7
         if: always()
