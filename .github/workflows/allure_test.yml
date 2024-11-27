@@ -17,22 +17,13 @@ jobs:
           python -m pip install --upgrade pip  
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi  
       - name: Lint with Ruff  
-        run: |  
+        run:  
           pip install ruff  
           ruff --format=github --target-version=py310 .  
         continue-on-error: true  
-      - name: Test with pytest  
-        run: |  
-          pytest --alluredir=allure-results   
-
-            - name: Install dependencies with Poetry
-        run: |
-          poetry install
-
-      - name: Run tests and generate Allure results
-        run: |
-          poetry run pytest --alluredir=allure-results
-
+      - name: Run tests and generate Allure results  
+        run:
+          pytest --alluredir=allure-results
       - name: Generate Allure report
         uses: simple-elf/allure-report-action@v1.7
         if: always()
